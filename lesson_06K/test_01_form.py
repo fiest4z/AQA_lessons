@@ -1,4 +1,3 @@
-from time import sleep
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
@@ -31,8 +30,6 @@ def test_01_form():
         Keys.RETURN
     )
 
-    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#zip-code")))
-
     assert "alert-danger" in driver.find_element(By.ID, "zip-code").get_attribute(
         "class"
     )
@@ -49,12 +46,8 @@ def test_01_form():
         "company",
     ]
     for field_id in green_fields:
-
         assert "alert-success" in driver.find_element(By.ID, field_id).get_attribute(
             "class"
         )
 
     driver.quit()
-
-
-test_01_form()
